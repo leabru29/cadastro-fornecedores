@@ -30,7 +30,7 @@ Siga estas etapas para configurar o projeto em sua máquina:
 4. Inicialize o ambiente Sail e inicie os contêineres Docker:
 
    ```bash
-   ./vendor/bin/sail up
+   ./vendor/bin/sail up -d
 5. Rode o Npm :
 
    ```bash
@@ -44,3 +44,44 @@ Siga estas etapas para configurar o projeto em sua máquina:
 8. A senha coloque:
     ```bash
     123123123
+9. O projeto estará disponível em `http://localhost`. Acesse-o em seu navegador.
+
+## Funcionalidades
+
+- **Cadastro de Fornecedores**: Você pode criar novos fornecedores fornecendo informações como nome, endereço, telefone, e-mail, etc.
+
+- **Listagem de Fornecedores**: Visualize a lista de fornecedores cadastrados com opções de edição e exclusão.
+
+- **Edição de Fornecedores**: Atualize as informações de fornecedores existentes.
+
+- **Exclusão de Fornecedores**: Remova fornecedores da lista.
+
+- **Validação de Dados**: O sistema possui validações para garantir que os dados estejam corretos antes de serem salvos no banco de dados.
+
+## Tecnologias Utilizadas
+
+- Laravel 10
+- Docker Sail
+- MySQL
+- Redis
+- Blade (para as views)
+- Eloquent (para o mapeamento objeto-relacional)
+
+## Contribuição
+
+Se desejar contribuir para este projeto, sinta-se à vontade para abrir problemas (issues) ou enviar solicitações de pull (pull requests). Estamos abertos a melhorias e feedback da comunidade.
+
+## Licença
+
+Este projeto é licenciado sob a [Licença MIT](LICENSE). Sinta-se à vontade para usá-lo e modificá-lo de acordo com suas necessidades.
+
+## Autor
+
+- Leandro
+- E-mail: leandro_ccb10@hotmail.com
+
+## Agradecimentos
+
+Agradecemos por escolher este projeto como base para o seu trabalho. Esperamos que seja útil e que você tenha uma ótima experiência desenvolvendo com o Laravel 10 e o Docker Sail.
+
+---
