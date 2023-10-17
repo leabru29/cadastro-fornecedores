@@ -1,9 +1,9 @@
 @extends('adminlte::page')
 
-@section('title', 'Cadastro de Fornecedores')
+@section('title', 'Editar de Fornecedor')
 
 @section('content_header')
-    <h1>Cadastro de Fornecedor</h1>
+    <h1>Editar de Fornecedor {{ $fornecedor->nome }}</h1>
 @stop
 
 @section('content')
@@ -12,12 +12,13 @@
             <a href="{{ route('fornecedores.index') }}" class="btn btn-success"><i class="fa fa-back"></i> Voltar</a>
         </div>
         <div class="card-body">
-            <form action="{{ route('fornecedores.store') }}" method="post">
+            <form action="{{ route('fornecedores.update', $fornecedor->id) }}" method="post">
+                @method('put')
                 @csrf
                 @include('cadastros.fornecedor.formulario')
                 <div class="row mt-3">
                     <div class="col-12 d-flex justify-content-center align-items-center">
-                        <button type="submit" class="btn btn-success btn-salvar">Cadastrar</button>
+                        <button type="submit" class="btn btn-success btn-salvar">Editar</button>
                     </div>
                 </div>
             </form>
@@ -32,6 +33,34 @@
 @section('js')
     <script>
         $(document).ready(function() {
+
+            var id = "{{ $fornecedor->id }}";
+            var url = '{{ url('fornecedores') }}/' + id;
+
+            $.get(url, function(response) {
+                $('#nome').val(response.nome);
+                $('#razao_social').val(response.razao_social);
+                $('#tipo_pessoa').val(response.tipo_pessoa);
+                $('#dt_nasc').val(response.dt_nasc);
+                $('#rg').val(response.rg);
+                $('#insc_est').val(response.insc_est);
+                $('#nome_res').val(response.nome_res);
+                $('#tel_res').val(response.tel_res);
+                $('#logradouro').val(response.logradouro);
+                $('#numero').val(response.numero);
+                $('#complemento').val(response.complemento);
+                $('#bairro').val(response.bairro);
+                $('#cidade').val(response.cidade);
+                $('#cep').val(response.cep);
+                $('#tel_1').val(response.tel_1);
+                $('#tel_2').val(response.tel_2);
+                $('#email').val(response.email);
+                $('#site').val(response.site);
+                $('#observacoes').val(response.observacoes);
+
+                console.log(response);
+            });
+
             var SPMaskBehavior = function(val) {
                     return val.replace(/\D/g, '').length === 11 ? '(00) 00000-0000' : '(00) 0000-00009';
                 },

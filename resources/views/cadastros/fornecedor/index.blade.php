@@ -16,21 +16,28 @@
             <table id="lista_fornecedores" class="table table-striped table-bordered">
                 <thead>
                     <tr>
-                        <th>Nome</th>
-                        <th>Razão Social</th>
-                        <th>Data de Nascimento</th>
-                        <th>RG</th>
-                        <th>Ações</th>
+                        <th width="30%">Nome</th>
+                        <th width="20%">Razão Social</th>
+                        <th width="15%">Tipo de Pessoa</th>
+                        <th width="15%">Telefone</th>
+                        <th width="20%">Ações</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
+                    @foreach ($fornecedores as $fornecedor)
+                        <tr>
+                            <td>{{ $fornecedor->nome }}</td>
+                            <td>{{ $fornecedor->razao_social }}</td>
+                            <td>{{ $fornecedor->tipo_pessoa == 'PJ' ? 'Pessoa Jurídica' : 'Pessoa Física' }}</td>
+                            <td>{{ $fornecedor->tel_1 }}</td>
+                            <td>
+                                <a href="{{ route('fornecedores.edit', $fornecedor->id) }}"
+                                    class="btn btn-primary">Editar</a>
+                                <button type="button" class="btn btn-danger btn-excluir"
+                                    data-id="{{ $fornecedor->id }}">Excluir</button>
+                            </td>
+                        </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>
@@ -43,9 +50,50 @@
 
 @section('js')
     <script>
-        $(document).ready(function() {
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
 
+        $(document).ready(function() {
             $('#lista_fornecedores').DataTable();
+        });
+
+        $(document).on('click', '.btn-excluir', function(e) {
+            var id = $(this).data('id');
+
+            Swal.fire({
+                title: 'Deseja realmente excluir?',
+                text: "Esta ação não poderá ser revertida!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Sim, pode deletar!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    var url = "{{ url('fornecedores') }}/" + id;
+                    $.ajax({
+                        url: url,
+                        method: 'DELETE',
+                        dataType: 'json',
+                        contentType: 'application/json',
+                        info: true,
+                        success: function(result) {
+                            Swal.fire(
+                                'Excluído!',
+                                result.message,
+                                'success'
+                            )
+                        },
+                        error: function(data) {
+                            console.log(data.responseJSON.message);
+                        }
+                    });
+                    $(this).closest('tr').remove();
+                }
+            });
         });
     </script>
 @stop

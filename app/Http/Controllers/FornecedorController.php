@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CadastroFornecedorRequest;
+use App\Models\Fornecedor;
 use Illuminate\Http\Request;
 
 class FornecedorController extends Controller
@@ -12,7 +13,8 @@ class FornecedorController extends Controller
      */
     public function index()
     {
-        return view('cadastros.fornecedor.index');
+        $fornecedores = Fornecedor::all();
+        return view('cadastros.fornecedor.index', compact('fornecedores'));
     }
 
     /**
@@ -28,7 +30,8 @@ class FornecedorController extends Controller
      */
     public function store(CadastroFornecedorRequest $request)
     {
-        dd($request->all());
+        $fornecedor = Fornecedor::create($request->all());
+        return redirect()->route('fornecedor.index')->with('message', 'Fornecedor '. $fornecedor->nome .' cadastrado com sucesso.');
     }
 
     /**
@@ -36,7 +39,8 @@ class FornecedorController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $fornecedor = Fornecedor::findOrFail($id);
+        return $fornecedor;
     }
 
     /**
@@ -44,7 +48,8 @@ class FornecedorController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $fornecedor = Fornecedor::findOrFail($id);
+        return view('cadastros.fornecedor.edit', compact('fornecedor'));
     }
 
     /**
@@ -52,7 +57,9 @@ class FornecedorController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $fornecedor = Fornecedor::findOrFail($id);
+        $fornecedor->update($request->all());
+        return redirect()->route('fornecedores.index')->with('message', 'Fornecedor Editado com sucesso!');
     }
 
     /**
@@ -60,6 +67,8 @@ class FornecedorController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $fornecedor = Fornecedor::findOrFail($id);
+        $fornecedor->delete();
+        return response()->json(['message' => 'Fornecedor deletado com sucesso.']);
     }
 }
