@@ -91,7 +91,7 @@
                             console.log(data.responseJSON.message);
                         }
                     });
-                    $(this).closest('tr').remove();
+                    $(this).closest('tr').fadeOut(1500);
                 }
             });
         });
