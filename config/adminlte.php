@@ -380,6 +380,16 @@ return [
                 ],
             ],
         ],
+        'Mask' => [
+            'active' => true,
+            'files' => [
+                [
+                    'type' => 'js',
+                    'asset' => true,
+                    'location' => 'js/mask/dist/jquery.mask.min.js',
+                ],
+            ],
+        ],
         'Select2' => [
             'active' => false,
             'files' => [
