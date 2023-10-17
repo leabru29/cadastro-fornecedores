@@ -31,7 +31,7 @@ class FornecedorController extends Controller
     public function store(CadastroFornecedorRequest $request)
     {
         $fornecedor = Fornecedor::create($request->all());
-        return redirect()->route('fornecedor.index')->with('message', 'Fornecedor '. $fornecedor->nome .' cadastrado com sucesso.');
+        return redirect()->route('fornecedores.index')->with('message', 'Fornecedor '. $fornecedor->nome .' cadastrado com sucesso.');
     }
 
     /**
