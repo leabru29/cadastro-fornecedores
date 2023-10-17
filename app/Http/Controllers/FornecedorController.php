@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CadastroFornecedorRequest;
 use Illuminate\Http\Request;
 
 class FornecedorController extends Controller
@@ -19,15 +20,15 @@ class FornecedorController extends Controller
      */
     public function create()
     {
-        //
+        return view('cadastros.fornecedor.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(CadastroFornecedorRequest $request)
     {
-        //
+        dd($request->all());
     }
 
     /**

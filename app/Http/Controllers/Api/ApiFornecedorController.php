@@ -3,16 +3,18 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\Fornecedor;
 use Illuminate\Http\Request;
 
 class ApiFornecedorController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Lista de Fornecedores
      */
     public function index()
     {
-        //
+        $fornecedores = Fornecedor::all();
+        return $fornecedores;
     }
 
     /**
