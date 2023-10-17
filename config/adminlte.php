@@ -14,7 +14,7 @@ return [
     |
     */
 
-    'title' => 'Sistema para Cadastro de Fornecedores',
+    'title' => 'Cadastro de Fornecedores',
     'title_prefix' => '',
     'title_postfix' => '',
 
@@ -63,7 +63,7 @@ return [
     |
     */
 
-    'logo' => '<b>Sistema</b>Cadastro Fornecedor',
+    'logo' => '<b>Sistema</b> Fornecedor',
     'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
@@ -338,6 +338,18 @@ return [
     */
 
     'plugins' => [
+
+        'Bootstrap5' => [
+            'active' => true,
+            'files' => [
+                [
+                    'type' => 'css',
+                    'asset' => 'true',
+                    'location' => '//cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css',
+                ]
+            ],
+        ],
+
         'Datatables' => [
             'active' => false,
             'files' => [
