@@ -7,7 +7,30 @@
 @stop
 
 @section('content')
-    <p>Welcome to this beautiful admin panel.</p>
+    <div class="card">
+        <div class="card-body">
+            <table id="lista_fornecedores" class="table table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Razão Social</th>
+                        <th>Data de Nascimento</th>
+                        <th>RG</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 @stop
 
 @section('css')
@@ -16,6 +39,8 @@
 
 @section('js')
     <script>
-        console.log('Hi!');
+        $(document).ready(function() {
+            $('#lista_fornecedores').DataTable();
+        });
     </script>
 @stop
