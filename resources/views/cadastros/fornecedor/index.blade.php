@@ -7,6 +7,11 @@
 @stop
 
 @section('content')
+    @if (session('message'))
+        <div class="alert alert-success message-sucesso">
+            {{ session('message') }}
+        </div>
+    @endif
     <div class="card">
         <div class="card-header">
             <a href="{{ route('fornecedores.create') }}" id="btn_adicionar" class="btn btn-success"><i class="fa fa-plus"></i>
@@ -57,6 +62,7 @@
         });
 
         $(document).ready(function() {
+            $('.message-sucesso').fadeOut(3000);
             $('#lista_fornecedores').DataTable({
                 language: {
                     "emptyTable": "Nenhum registro encontrado",
