@@ -8,6 +8,10 @@
 
 @section('content')
     <div class="card">
+        <div class="card-header">
+            <a href="{{ route('fornecedores.create') }}" id="btn_adicionar" class="btn btn-success"><i class="fa fa-plus"></i>
+                Adicionar</a>
+        </div>
         <div class="card-body">
             <table id="lista_fornecedores" class="table table-striped table-bordered">
                 <thead>
@@ -40,6 +44,7 @@
 @section('js')
     <script>
         $(document).ready(function() {
+
             $('#lista_fornecedores').DataTable();
         });
     </script>
