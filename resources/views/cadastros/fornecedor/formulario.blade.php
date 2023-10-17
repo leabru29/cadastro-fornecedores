@@ -19,10 +19,10 @@
     <div class="row mt-3">
         <div class="col-6">
             <label for="tipo_pessoa" class="form-label">Tipo de Pessoa</label>
-            <select class="form-select @error('tipo_pessoa') is-invalid @enderror" name="tipo_pessoa">
+            <select class="form-select @error('tipo_pessoa') is-invalid @enderror" name="tipo_pessoa" id="tipo_pessoa">
                 <option selected value="">Selecione um tipo de Pessoa</option>
-                <option value="1">Pessoa Física (PF)</option>
-                <option value="2">Pessoa Jurídica (PJ)</option>
+                <option value="PF">Pessoa Física (PF)</option>
+                <option value="PJ">Pessoa Jurídica (PJ)</option>
             </select>
             @error('tipo_pessoa')
                 <span class="text-danger">{{ $message }} *</span>
