@@ -296,6 +296,7 @@ return [
             'icon'    => 'fas fa-fw fa-share',
             'submenu' => [
                 [
+                    'icon' => 'fas fa-store-alt',
                     'text' => 'Fornecedores',
                     'route'  => 'fornecedores.index',
                 ],
