@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\FornecedorController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -17,6 +18,6 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home')->middleware('auth');
 
-Route::resource('fornecedores', FornecedorController::class);
+Route::resource('fornecedores', FornecedorController::class)->middleware('auth');
