@@ -3,17 +3,34 @@
 Este é um projeto desenvolvido com Laravel 10 para a gestão de fornecedores. Ele inclui as funcionalidades de criação, leitura, atualização e exclusão (CRUD) de fornecedores, bem como validações e seeders para preencher o banco de dados com dados de exemplo. O Docker Sail é usado para simplificar o ambiente de desenvolvimento.
 
 ## Print das Telas
+### Tela de Login
 ![Tela de Login](public/images/print-telas/tela-login.jpg)
 
+### Listagem
 ![Listagem de dados](public/images/print-telas/listagem/listagem.jpg)
 
-![Listagem de dados](public/images/print-telas/cadastro/cadastro1.jpg)
+### Cadastro
+![Cadastro](public/images/print-telas/cadastro/cadastro2.jpg)
 
-![Listagem de dados](public/images/print-telas/edicao/tela-edicao-visualizacao-dados.jpg)
+![Cadastro](public/images/print-telas/cadastro/cadastro1.jpg)
 
-![Listagem de dados](public/images/print-telas/exclusao/mensagem-pergunta-excluir.jpg)
+![Cadastro](public/images/print-telas/cadastro/validacao-cadastro.jpg)
 
-![Listagem de dados](public/images/print-telas/exclusao/excluido.jpg)
+![Cadastro](public/images/print-telas/cadastro/final-tela-validacao-cadastro.jpg)
+
+![Cadastro](public/images/print-telas/cadastro/mensagem-sucesso-cadastro.jpg)
+
+### Edição e Visualização de dados
+![Visualização de dados](public/images/print-telas/edicao/tela-edicao-visualizacao-dados.jpg)
+
+![Visualização e edição](public/images/print-telas/edicao/final-tela-edicao-visualizacao-dados.jpg)
+
+![Mensagem de Retorno](public/images/print-telas/edicao/mensagem-editado-sucesso.jpg)
+
+### Excluíndo dados
+![Mensagem para excluir](public/images/print-telas/exclusao/mensagem-pergunta-excluir.jpg)
+
+![Mensagem de excluído](public/images/print-telas/exclusao/excluido.jpg)
 
 ## Requisitos
 
