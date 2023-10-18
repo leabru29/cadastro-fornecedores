@@ -55,7 +55,7 @@ class FornecedorController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(CadastroFornecedorRequest $request, string $id)
     {
         $fornecedor = Fornecedor::findOrFail($id);
         $fornecedor->update($request->all());
