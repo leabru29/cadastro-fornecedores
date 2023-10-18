@@ -64,6 +64,15 @@
         $(document).ready(function() {
             $('.message-sucesso').fadeOut(3000);
             $('#lista_fornecedores').DataTable({
+                'pageLength': 5,
+                'aLengthMenu': [
+                    [5, 10, 15, -1],
+                    [5, 10, 15, "Todos"]
+                ],
+                order: [
+                    [0, 'desc']
+                ],
+
                 language: {
                     url: "/js/traducao.json"
                 },
