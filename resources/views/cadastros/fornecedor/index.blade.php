@@ -62,7 +62,7 @@
         });
 
         $(document).ready(function() {
-            $('.message-sucesso').fadeOut(3000);
+            $('.message-sucesso').fadeOut(10000);
             $('#lista_fornecedores').DataTable({
                 'pageLength': 5,
                 'aLengthMenu': [
