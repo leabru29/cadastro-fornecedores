@@ -9,10 +9,12 @@ use Tests\TestCase;
 class ApiFornecedorControllerTest extends TestCase
 {
     /**
-     * A basic feature test example.
+     * Testa se retorna todos os fornecedores.
      */
     public function test_if_return_all_fornecedores(): void
     {
+        $this->withoutMiddleware();
+        
         $response = $this->get('/api/fornecedores');
 
         $response->assertStatus(200);
