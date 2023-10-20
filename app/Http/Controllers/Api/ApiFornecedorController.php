@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CadastroFornecedorRequest;
 use App\Models\Fornecedor;
 use Illuminate\Http\Request;
 
@@ -20,9 +21,10 @@ class ApiFornecedorController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(CadastroFornecedorRequest $request)
     {
-        //
+        $fornecedor = Fornecedor::create($request->all());
+        return response()->json(['message' => 'Fornecedor cadastrado com sucesso.'], 201);
     }
 
     /**

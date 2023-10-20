@@ -23,4 +23,37 @@ class ApiFornecedorControllerTest extends TestCase
 
         $response->assertStatus(200);
     }
+
+    public function test_add_fornecedor(): void
+    {
+        Sanctum::actingAs(
+            User::factory()->create()
+        );
+
+        $data = [
+            "nome" => "Teste",
+            "razao_social" => "Teste Razão Social",
+            "tipo_pessoa" => "PF",
+            "dt_nasc" => "2000-01-01",
+            "rg" => "11.222.333-4",
+            "insc_est" => "123123123",
+            "nome_res" => "Teste Nome Residencial",
+            "tel_res" => "(11) 1111-2222",
+            "logradouro" => "Teste Logradouro",
+            "numero" => rand(1111, 9999),
+            "complemento" => "Teste complemento",
+            "bairro" => "Teste bairro",
+            "cidade" => "São Paulo",
+            "cep" => "06700-453",
+            "tel_2" => "(11) 94323-5434",
+            "tel_1" => "(11) 54355-4353",
+            "email" => "teste@teste.com",
+            "site" => "teste.com",
+            "observacoes" => "teste teste teste"
+        ];
+
+        $response = $this->post('/api/fornecedores', $data);
+        $response->assertStatus(201);
+        $response->assertJson(['message' => 'Fornecedor cadastrado com sucesso.']);
+    }
 }
