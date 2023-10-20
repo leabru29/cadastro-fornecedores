@@ -2,8 +2,10 @@
 
 namespace Tests\Feature\App\Http\Controllers\Api;
 
+use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
+use Laravel\Sanctum\Sanctum;
 use Tests\TestCase;
 
 class ApiFornecedorControllerTest extends TestCase
@@ -13,7 +15,9 @@ class ApiFornecedorControllerTest extends TestCase
      */
     public function test_if_return_all_fornecedores(): void
     {
-        $this->withoutMiddleware();
+        Sanctum::actingAs(
+            User::factory()->create()
+        );
         
         $response = $this->get('/api/fornecedores');
 
