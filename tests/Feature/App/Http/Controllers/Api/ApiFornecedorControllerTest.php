@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\App\Http\Controllers\Api;
 
+use App\Models\Fornecedor;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -55,5 +56,17 @@ class ApiFornecedorControllerTest extends TestCase
         $response = $this->post('/api/fornecedores', $data);
         $response->assertStatus(201);
         $response->assertJson(['message' => 'Fornecedor cadastrado com sucesso.']);
+    }
+
+    public function test_if_find_fornecedor() : void
+    {
+        Sanctum::actingAs(
+            User::factory()->create()
+        );
+
+        $fornecedor = Fornecedor::where('nome', '=', 'Teste')->get()->toArray();
+
+        $response = $this->get('/api/fornecedores/' . $fornecedor[1]['id']);
+        $response->assertStatus(200);
     }
 }
