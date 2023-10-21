@@ -19,7 +19,7 @@ class ApiFornecedorController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Método responsável por cadastrar um novo fornecedor.
      */
     public function store(CadastroFornecedorRequest $request)
     {
@@ -28,26 +28,33 @@ class ApiFornecedorController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Método responsável por mostrar um Fornecedor.
      */
     public function show(string $id)
     {
-        //
+        $fornecedor = Fornecedor::findOrFail($id);
+        return $fornecedor;
     }
 
     /**
-     * Update the specified resource in storage.
+     * Método responsável por atualizar um Fornecedor.
+     * Este método usa o método Show nessa mesma classe para encontrar o Fornecedor
      */
-    public function update(Request $request, string $id)
+    public function update(CadastroFornecedorRequest $request, string $id)
     {
-        //
+        $fornecedor = $this->show($id);
+        $fornecedor->update($request->all());
+        return response()->json(['message' => 'Forncedor atualizado com sucesso.']);
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Método responsável por deletar um Fornecedor, porém o fornecedor não é deletado no banco de acordo 
+     * com a Model, poís é usado o SoftDelete.
      */
     public function destroy(string $id)
     {
-        //
+        $fornecedor = $this->show($id);
+        $fornecedor->destroy();
+        return response()->json(['message' => 'Fornecedor deletado com sucesso.']);
     }
 }
